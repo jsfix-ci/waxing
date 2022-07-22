@@ -29,7 +29,7 @@ export const decryptOfficeFile = async (buffer, password) => {
 export const isOLEDoc = (buffer) => buffer.slice(0, MAGIC_BYTES.length).equals(Buffer.from(MAGIC_BYTES))
 
 export const isZipFile = async (buffer) => {
-  const fileExt = await fileType.fromBuffer(buffer)
+  const fileExt = await fileType.fileTypeFromBuffer(buffer)
   return Boolean(fileExt) && ['docx', 'xlsx', 'pptx', 'zip'].includes(fileExt.ext)
 }
 
